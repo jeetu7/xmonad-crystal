@@ -1,3 +1,5 @@
+*-linux
+*.state
 dist
 dist-*
 cabal-dev

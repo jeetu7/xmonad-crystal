@@ -28,7 +28,8 @@ import qualified Data.Map as M
 import qualified XMonad.StackSet as W
 
 ------------------------------------------------------------------------------
-myWorkspaces = [" 1:Web ", " 2:Work " , " 3:Extra ", " 4:Music "] ++ map show [5..6]                                                 -- Workspace names
+-- Workspace names
+myWorkspaces = [" 1:Web ", " 2:Work " , " 3:Extra ", " 4:Music "] ++ map show [5..6]                                                 
 ------------------------------------------------------------------------------
 scratchpads = [ NS "quake" "urxvt -name quake" findQuake manageQuake
               , NS "gvimnotes" "gvim --role notes ~/.notes.txt" findGvim nonFloating
@@ -111,6 +112,7 @@ myConfig = ewmh defaultConfig
         , workspaces = myWorkspaces
         , keys = \_ -> M.fromList  crystalKeys                                 -- Add list "crystalKeys" key bindings
         , startupHook =  myStartupHook
+	, handleEventHook    = handleEventHook defaultConfig <+> docksEventHook
         , logHook = updatePointer (0.05, 0.95) (1, 1)
         }
 
